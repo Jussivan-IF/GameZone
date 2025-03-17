@@ -22,15 +22,6 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false
       },
-      avaliationID: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Avaliation', // Plural table name
-          key: 'id'
-        },
-        onUpdate: 'CASCADE', // Important for data integrity
-        onDelete: 'CASCADE'  // Important for data integrity
-      },
       genreID: {
         type: Sequelize.INTEGER,
         references: {
@@ -57,15 +48,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'Developers', // Plural table name
-          key: 'id'
-        },
-        onUpdate: 'CASCADE', // Important for data integrity
-        onDelete: 'CASCADE'  // Important for data integrity
-      },
-      buyID: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Buys', // Plural table name
           key: 'id'
         },
         onUpdate: 'CASCADE', // Important for data integrity

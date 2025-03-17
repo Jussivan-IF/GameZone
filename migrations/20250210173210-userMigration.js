@@ -32,16 +32,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      buyID: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Buys', // Nome da tabela referenciada no plural
-          key: 'id'
-        },
-        onUpdate: 'CASCADE', // Adicionei onUpdate e onDelete para garantir a integridade referencial
-        onDelete: 'CASCADE'
-      },
       password: {
         type: Sequelize.STRING,
         allowNull: false

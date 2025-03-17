@@ -47,11 +47,11 @@ export const listGames = async (req, res) => {
 
 // Cria um novo jogo
 export const createGame = async (req, res) => {
-  const { name, description, price, genreID, platformID, developerID, avaliationID, buyID } = req.body;
+  const { name, description, price, genreID, platformID, developerID} = req.body;
 
   try {
     // Validação dos dados
-    if (!name || !description || !price || !genreID || !platformID || !developerID || !avaliationID || !buyID) {
+    if (!name || !description || !price || !genreID || !platformID || !developerID) {
       return res.status(400).json({ message: 'Todos os campos são obrigatórios!' });
     }
 
@@ -63,8 +63,6 @@ export const createGame = async (req, res) => {
       genreID,
       platformID,
       developerID,
-      avaliationID,
-      buyID,
     });
 
     res.status(201).json({ message: 'Jogo criado com sucesso', game: newGame });

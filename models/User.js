@@ -41,14 +41,6 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    buyID: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Buy',
-        key: 'id',
-      },
-      allowNull: false,
-    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -58,10 +50,6 @@ export default (sequelize, DataTypes) => {
       },
     },
   });
-
-  User.associate = (models) => {
-    User.hasMany(models.Buy, { foreignKey: 'buyID' });
-  };
 
   return User;
 };

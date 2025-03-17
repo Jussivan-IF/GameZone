@@ -41,11 +41,11 @@ export const listUsers = async (req, res) => {
 
 // Cria um novo usuário
 export const createUser = async (req, res) => {
-  const { name, dateBirth, email, phone, address, buyID, password } = req.body;
+  const { name, dateBirth, email, phone, address, password } = req.body;
 
   try {
     // Validação dos dados
-    if (!name || !dateBirth || !email || !phone || !address || !buyID || !password) {
+    if (!name || !dateBirth || !email || !phone || !address || !password) {
       return res.status(400).json({ message: 'Todos os campos são obrigatórios' });
     }
 
@@ -60,7 +60,7 @@ export const createUser = async (req, res) => {
     }
 
     // Cria o usuário no banco de dados
-    const newUser = await db.User.create({ name, dateBirth, email, phone, address, buyID, password });
+    const newUser = await db.User.create({ name, dateBirth, email, phone, address, password });
     res.status(201).json({ message: 'Usuário criado com sucesso', user: newUser });
   } catch (error) {
     console.error('Erro ao criar usuário:', error);
@@ -71,7 +71,7 @@ export const createUser = async (req, res) => {
 // Atualiza um usuário existente
 export const updateUser = async (req, res) => {
   const { id } = req.params;
-  const { name, dateBirth, email, phone, address, buyID, password } = req.body;
+  const { name, dateBirth, email, phone, address, password } = req.body;
 
   try {
     // Busca o usuário pelo ID
@@ -86,7 +86,6 @@ export const updateUser = async (req, res) => {
     userToUpdate.email = email || userToUpdate.email;
     userToUpdate.phone = phone || userToUpdate.phone;
     userToUpdate.address = address || userToUpdate.address;
-    userToUpdate.buyID = buyID || userToUpdate.buyID;
     userToUpdate.password = password || userToUpdate.password;
     await userToUpdate.save();
 
